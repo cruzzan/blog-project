@@ -9,6 +9,8 @@ Run the image `$ docker run --name blog-project-site -d -p 8080:80 -v $PWD:/usr/
 
 Run composer `docker run --rm --interactive --tty --volume $PWD:/app --user $(id -u):$(id -g) composer:latest <command>`
 
+Run artisan `docker run --rm --interactive --tty --volume $PWD:/app -w /app --user $(id -u):$(id -g) php:8.1.10-cli php artisan <command>`
+
 ## Run tests and linting
 Run unit tests `$ composer run unit-tests`
 
@@ -18,4 +20,4 @@ Run unit tests `$ composer run unit-tests`
 * *Profile setup*:
 
 ## Additional notes
-This project is based on the Laravel Lumen framework and as such is subject to the MIT license.
+This project is based on the Laravel framework and as such is subject to the MIT license.
