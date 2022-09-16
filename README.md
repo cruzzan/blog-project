@@ -5,7 +5,9 @@ This project is created to complete my grade for the course DV1440 at BTH.
 ## Run locally
 Build docker container `$ docker build -t blog-project . --load`
 
-Run the image `$ docker run --name blog-project-site -d -p 8080:80 blog-project`
+Run the image `$ docker run --name blog-project-site -d -p 8080:80 -v $PWD:/usr/share/nginx/blog-project blog-project`
+
+Run composer `docker run --rm --interactive --tty --volume $PWD:/app --user $(id -u):$(id -g) composer:latest <command>`
 
 ## Run tests and linting
 Run unit tests `$ composer run unit-tests`
