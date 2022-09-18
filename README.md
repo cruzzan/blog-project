@@ -21,5 +21,13 @@ Run unit tests `$ composer run unit-tests`
 * *Login*:
 * *Profile setup*:
 
+## Report
+
+
+#### Facades
+I really do not like using the facades system that laravel has implemented. The fact that they have to be building their own extensions to the testing framework to enable mocking is enough to raise some red flags for me.
+
+Therefore I am going to be avoiding facades like covid-19.
+
 ## Additional notes
 This project is based on the Laravel framework and as such is subject to the MIT license.
