@@ -2,6 +2,7 @@
 
 namespace Routes;
 
+use App\Http\Controllers\PostController;
 use Illuminate\Routing\RouteRegistrar;
 
 class Web {
@@ -9,5 +10,7 @@ class Web {
         $registrar->get('/', function () {
             return view('welcome');
         });
+
+        $registrar->resource('post', PostController::class);
     }
 }
