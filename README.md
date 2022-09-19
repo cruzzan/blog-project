@@ -29,5 +29,8 @@ I really do not like using the facades system that laravel has implemented. The 
 
 Therefore I am going to be avoiding facades like covid-19.
 
+#### Frontend framework
+I decided to go for the good old bootstrap framework for my frontend. Mostly because it is just wildly convenient and simple to use, and since that is not an important part of this project I even went so far as to only use the CDN version. Which is even simpler, however that is not a super great plan for a production setup, for reliability and perhaps load times.
+
 ## Additional notes
 This project is based on the Laravel framework and as such is subject to the MIT license.
