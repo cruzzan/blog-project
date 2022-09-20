@@ -16,14 +16,13 @@ class PostController extends Controller
         $this->viewFactory = $factory;
     }
 
-    public function create(): View {
-
+    public function create(): View
+    {
         return $this->viewFactory->make('post.form');
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $request->dd();
     }
-
-
 }
