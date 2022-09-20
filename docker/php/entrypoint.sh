@@ -24,5 +24,7 @@ sed -i "s|;*upload_max_filesize =.*|upload_max_filesize = ${PHP_MAX_UPLOAD}|i" /
 sed -i "s|;*max_file_uploads =.*|max_file_uploads = ${PHP_MAX_FILE_UPLOAD}|i" /etc/php81/php.ini
 sed -i "s|;*post_max_size =.*|post_max_size = ${PHP_MAX_POST}|i" /etc/php81/php.ini
 sed -i "s|;*cgi.fix_pathinfo=.*|cgi.fix_pathinfo= ${PHP_CGI_FIX_PATHINFO}|i" /etc/php81/php.ini
+sed -i "s|;extension=pdo_pgsql|extension=pdo_pgsql|i" /etc/php81/php.ini
+sed -i "s|;extension=pgsql|extension=pgsql|i" /etc/php81/php.ini
 
 exec "php-fpm81"
