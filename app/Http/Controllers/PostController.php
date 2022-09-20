@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Contracts\View\Factory as ViewFactory;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class PostController extends Controller
@@ -18,6 +19,10 @@ class PostController extends Controller
     public function create(): View {
 
         return $this->viewFactory->make('post.form');
+    }
+
+    public function store(Request $request) {
+        $request->dd();
     }
 
 
