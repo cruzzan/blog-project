@@ -13,6 +13,8 @@ PHP_DISPLAY_STARTUP_ERRORS="On"
 PHP_ERROR_REPORTING="E_COMPILE_ERROR\|E_RECOVERABLE_ERROR\|E_ERROR\|E_CORE_ERROR"
 PHP_CGI_FIX_PATHINFO=0
 
+ln -s /usr/bin/php81 /usr/bin/php
+
 sed -i "s|user\s*=\s*nobody|user = ${PHP_FPM_USER}|g" /etc/php81/php-fpm.d/www.conf
 sed -i "s|group\s*=\s*nobody|group = ${PHP_FPM_GROUP}|g" /etc/php81/php-fpm.d/www.conf
 
@@ -24,7 +26,5 @@ sed -i "s|;*upload_max_filesize =.*|upload_max_filesize = ${PHP_MAX_UPLOAD}|i" /
 sed -i "s|;*max_file_uploads =.*|max_file_uploads = ${PHP_MAX_FILE_UPLOAD}|i" /etc/php81/php.ini
 sed -i "s|;*post_max_size =.*|post_max_size = ${PHP_MAX_POST}|i" /etc/php81/php.ini
 sed -i "s|;*cgi.fix_pathinfo=.*|cgi.fix_pathinfo= ${PHP_CGI_FIX_PATHINFO}|i" /etc/php81/php.ini
-sed -i "s|;extension=pdo_pgsql|extension=pdo_pgsql|i" /etc/php81/php.ini
-sed -i "s|;extension=pgsql|extension=pgsql|i" /etc/php81/php.ini
 
 exec "php-fpm81"

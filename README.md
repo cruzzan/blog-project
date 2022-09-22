@@ -9,7 +9,7 @@ Run the image `$ docker run --name blog-project-site -d -p 8080:80 -v $PWD:/usr/
 
 Run composer `docker run --rm --interactive --tty --volume $PWD:/app --user $(id -u):$(id -g) composer:latest <command>`
 
-Run artisan `docker run --rm --interactive --tty --volume $PWD:/app -w /app --user $(id -u):$(id -g) php:8.1.10-cli php artisan <command>`
+Run artisan `docker run --rm --interactive --tty --volume $PWD:/app -w /app --user $(id -u):$(id -g) php:8.1.10-cli php artisan <command>` (Running migrations and that kind of stuff needs to be run from inside a running app-container)
 
 Run node/yarn `docker run --rm --interactive --tty --volume $PWD:/app -w /app --user $(id -u):$(id -g) node:current-alpine3.15 <command>`
 
