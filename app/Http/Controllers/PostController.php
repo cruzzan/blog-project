@@ -33,4 +33,17 @@ class PostController extends Controller
         $post->saveOrFail();
         dd(DB::table('posts')->first());
     }
+
+    public function show(int $id)
+    {
+        $post = Post::findOrFail($id);
+        return $this->viewFactory->make(
+            'post.show',
+            [
+                'content' => $post->content,
+                'heading' => $post->heading,
+                'published' => sprintf('Created: %s Updated: %s', $post->created_at, $post->updated_at),
+            ]
+        );
+    }
 }
