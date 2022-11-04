@@ -1,4 +1,6 @@
-<x-root>
+@extends('root')
+
+@section('content')
     <h2>Create a blog post</h2>
     <form method="POST" action="/post">
         @csrf
@@ -25,4 +27,4 @@
                 console.error( error );
             } );
     </script>
-</x-root>
+@endsection
