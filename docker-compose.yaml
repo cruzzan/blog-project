@@ -1,0 +1,40 @@
+version: '3.8'
+services:
+  site:
+    image: "blog-project:latest"
+    restart: "no"
+    networks:
+      - blog-network
+    ports:
+      - "8080:80"
+    depends_on:
+      - postgres
+    volumes:
+      - ./:/usr/share/nginx/blog-project
+    working_dir: /usr/share/nginx/blog-project
+
+  postgres:
+    image: postgres:15.0-alpine
+    restart: "always"
+    environment:
+      POSTGRES_USER: blog-project
+      POSTGRES_PASSWORD: NotVerySecure123
+      POSTGRES_DB: blog
+    ports:
+      - "5432:5432"
+    networks:
+      blog-network:
+        aliases:
+          - database
+
+  redis:
+    image: redis:7.0-alpine
+    restart: always
+    networks:
+      blog-network:
+        aliases:
+          - redis
+
+
+networks:
+  blog-network:
