@@ -3,13 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Request;
 
 class LoginController extends Controller {
     public function index()
     {
-        Log::debug('Hallå');
         return view()->make('login.index');
     }
 
