@@ -1,0 +1,4 @@
+.form-signin input[type='email'] {
+    padding-bottom: -1px;
+    border-bottom: none;
+}
