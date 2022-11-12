@@ -3,15 +3,15 @@
 This project is created to complete my grade for the course DV1440 at BTH.
 
 ## Run locally
-Build docker container `$ docker build -t blog-project . --load`
+Build docker container `$ docker build -t blog-project .`
 
-Run the project `$ docker-compose up -d`
+Run the project `$docker-compose up -d`
 
-Run composer `docker run --rm --interactive --tty --volume $PWD:/app --user $(id -u):$(id -g) composer:latest <command>`
+Run composer `docker run --rm -it --volume $PWD:/app --user $(id -u):$(id -g) composer:latest <command>`
 
-Run artisan `docker run --rm --interactive --tty --volume $PWD:/app -w /app --user $(id -u):$(id -g) php:8.1.10-cli php artisan <command>` (Running migrations and that kind of stuff needs to be run from inside a running app-container)
+Run artisan is done using the site container.
 
-Run node/yarn `docker run --rm --interactive --tty --volume $PWD:/app -w /app --user $(id -u):$(id -g) node:current-alpine3.15 <command>`
+Run node/yarn `docker run --rm -it --volume $PWD:/app -w /app --user $(id -u):$(id -g) node:current-alpine3.16 <command>`
 
 ## Run tests and linting
 Run unit tests `$ composer run unit-tests`
