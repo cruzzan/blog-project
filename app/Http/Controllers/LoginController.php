@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class LoginController extends Controller {
     public function index()
@@ -11,7 +12,7 @@ class LoginController extends Controller {
         return view()->make('login.index');
     }
 
-    public function authenticate(Request $request)
+    public function authenticate(Request $request): Response
     {
         $credentials = $request->validate([
             'email' => ['required', 'email'],
@@ -27,5 +28,16 @@ class LoginController extends Controller {
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ])->onlyInput('email');
+    }
+
+    public function logout(Request $request): Response
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 }
