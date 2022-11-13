@@ -11,11 +11,11 @@
                 @csrf
                 <div class="form-floating">
                     <input type="email" name="email" id="email" class="form-control" placeholder="Email">
-                    <label for="email">Email:</label>
+                    <label for="email">Email</label>
                 </div>
                 <div class="form-floating">
                     <input type="password" name="password" id="password" class="form-control" placeholder="Password">
-                    <label for="password">Password:</label>
+                    <label for="password">Password</label>
                 </div>
                 <button type="submit" class="btn btn-primary w-75">Go...</button>
             </form>
