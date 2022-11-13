@@ -25,7 +25,7 @@ class PostController extends Controller
         dd(DB::table('posts')->first());
     }
 
-    public function show(int $id)
+    public function show(int $id): View
     {
         $post = Post::findOrFail($id);
         return view()->make(
