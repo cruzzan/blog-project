@@ -22,7 +22,7 @@ class LoginController extends Controller {
         if (Auth::attempt($credentials)){
             $request->session()->regenerate();
 
-            return redirect()->intended('');
+            return redirect()->intended(route('home'));
         }
 
         return back()->withErrors([
@@ -38,6 +38,6 @@ class LoginController extends Controller {
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect(route('home'));
     }
 }
