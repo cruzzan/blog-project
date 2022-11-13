@@ -4,7 +4,9 @@
 
         @if (Auth::check())
             <p>You are logged in</p>
-        @else
+        @endif
+
+        @if(substr_count(URL::current(), 'login') <= 0 && !Auth::check())
             <div>
                 <button type="button" class="btn btn-outline-success">Logga in</button>
                 <button type="button" class="btn btn-outline-primary">Skapa konto</button>
