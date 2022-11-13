@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,9 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'heading' => fake()->sentence(),
+            'content' => implode('\n', fake()->paragraphs(5)),
+            'user_id' => User::factory(),
         ];
     }
 }
