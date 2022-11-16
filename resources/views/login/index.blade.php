@@ -1,6 +1,11 @@
 @extends('root')
 
 @section('content')
+    @if(session('info-message'))
+    <div class="alert alert-info col-6 mx-auto" role="alert">
+        {{ session('info-message') }}
+    </div>
+    @endif
     <main class="form-signin m-auto">
         <div class="col-lg-4 mx-auto rounded">
             <h2 class="text-center">Sign in</h2>

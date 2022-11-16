@@ -9,7 +9,7 @@
         @if(substr_count(URL::current(), 'login') <= 0 && !Auth::check())
             <div>
                 <a href="{{ route('login') }}"><button type="button" class="btn btn-outline-success">Logga in</button></a>
-                <a href="#register"><button type="button" class="btn btn-outline-primary">Skapa konto</button></a>
+                <a href="{{ route('register') }}"><button type="button" class="btn btn-outline-primary">Skapa konto</button></a>
             </div>
         @endif
     </div>
