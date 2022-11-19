@@ -6,7 +6,8 @@ use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class LoginController extends Controller {
+class LoginController extends Controller
+{
     public function index()
     {
         return view()->make('login.index');
@@ -19,7 +20,7 @@ class LoginController extends Controller {
             'password' => ['required'],
         ]);
 
-        if (Auth::attempt($credentials)){
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
             return redirect()->intended(route('home'));

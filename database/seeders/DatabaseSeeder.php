@@ -25,11 +25,11 @@ class DatabaseSeeder extends Seeder
              'password' => Hash::make('password'),
          ])->first();
 
-         foreach (CapabilityTag::cases() as $capability) {
-             UserCapabilityTag::factory(1)->create([
-                 'user_id' => $user,
-                 'capability' => $capability->value,
-             ]);
-         }
+        foreach (CapabilityTag::cases() as $capability) {
+            UserCapabilityTag::factory(1)->create([
+                'user_id' => $user,
+                'capability' => $capability->value,
+            ]);
+        }
     }
 }

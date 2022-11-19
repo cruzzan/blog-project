@@ -5,7 +5,7 @@ namespace App\View\Components;
 use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\View\Component;
 
-class root extends Component
+class Root extends Component
 {
     private ViewFactory $viewFactory;
 

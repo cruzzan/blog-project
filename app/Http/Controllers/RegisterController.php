@@ -26,6 +26,7 @@ class RegisterController extends Controller
         $user = new User($validated);
         $user->save();
 
-        return redirect('login')->with('info-message', 'Congratz, you can now log in with the account you just created!');
+        return redirect('login')
+            ->with('info-message', 'Congratz, you can now log in with the account you just created!');
     }
 }
