@@ -4,17 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
-use Illuminate\View\View;
 
 class PostController extends Controller
 {
-    public function create(): View
+    public function __construct()
     {
-        return view()->make('post.form');
+        $this->authorizeResource(Post::class, 'post');
     }
 
-    public function store(Request $request)
+    public function index(): Response
+    {
+        return response([], Response::HTTP_NOT_IMPLEMENTED );
+    }
+
+    public function create(): Response
+    {
+        return response()->view('post.form');
+    }
+
+    public function store(Request $request): Response
     {
         $post = new Post([
             'heading' => $request->get('heading'),
@@ -25,16 +35,30 @@ class PostController extends Controller
         dd(DB::table('posts')->first());
     }
 
-    public function show(int $id): View
+    public function show(Post $post): Response
     {
-        $post = Post::findOrFail($id);
-        return view()->make(
-            'post.show',
+        return response()
+            ->view('post.show',
             [
                 'content' => $post->content,
                 'heading' => $post->heading,
                 'published' => sprintf('Created: %s Updated: %s', $post->created_at, $post->updated_at),
             ]
         );
+    }
+
+    public function edit(Post $post): Response
+    {
+        return response([], Response::HTTP_NOT_IMPLEMENTED );
+    }
+
+    public function update(Request $request, Post $post)
+    {
+        return response([], Response::HTTP_NOT_IMPLEMENTED );
+    }
+
+    public function destroy(Post $post)
+    {
+        return response([], Response::HTTP_NOT_IMPLEMENTED );
     }
 }

@@ -2,18 +2,25 @@
 
 namespace App\Models\Policies;
 
+use App\Models\Enums\CapabilityTag;
 use App\Models\Post;
 use App\Models\User;
 
 class PostPolicy
 {
-    public function update(User $user, Post $post)
+    public function view(): bool
     {
-        return $user->id === $post->user_id;
+        return true;
     }
 
-    public function delete(User $user, Post $post)
+    public function create(User $user, Post $post = null): bool
     {
-        return $user->id === $post->user_id;
+        if ($user->capabilityTags()->get()->pluck('capability')->contains(CapabilityTag::Author)) {
+            if (isset($post)) {
+                return $user->id === $post->user_id;
+            }
+            return true;
+        }
+        return false;
     }
 }
