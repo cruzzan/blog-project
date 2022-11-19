@@ -9,7 +9,11 @@ Run the project `$docker-compose up -d`
 
 Run composer `docker run --rm -it --volume $PWD:/app --user $(id -u):$(id -g) composer:latest <command>`
 
-Run artisan is done using the site container.
+Run artisan is done using the site container:
+```
+docker exec -t blog-project-site-1 php artisan
+docker exec -t blog-project-site-1 php vendor/bin/phpcs
+```
 
 Run node/yarn `docker run --rm -it --volume $PWD:/app -w /app --user $(id -u):$(id -g) node:current-alpine3.16 <command>`
 
