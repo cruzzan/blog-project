@@ -1,5 +1,5 @@
 <header class="navbar py-3 mb-3 border-bottom shadow sticky-top bg-light">
-    <div class="container-fluid">
+    <div class="container">
         <a class="navbar-brand" href="{{ route('home') }}"><h3>SSoB</h3></a>
 
         @if (Auth::check())
