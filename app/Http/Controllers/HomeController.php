@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
+use Illuminate\Http\Response;
 
 class HomeController extends Controller
 {
-    public function index(Request $request): View
+    public function index(Request $request): Response
     {
-        return view()->make('home.index');
+        $posts = Post::orderBy('created_at', 'desc')->limit(20)->get();
+        return response()->view('home.index', ['posts' => $posts]);
     }
 }

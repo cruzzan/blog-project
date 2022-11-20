@@ -1,5 +1,9 @@
 @extends('root')
 
 @section('content')
-    <p>This is where the content will go</p>
+    <div class="col-10">
+        @foreach($posts as $post)
+            <x-post.miniature :post="$post"></x-post.miniature>
+        @endforeach
+    </div>
 @endsection
