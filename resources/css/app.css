@@ -22,3 +22,7 @@
     background-color: #6b7280;
     color: #cbd5e0;
 }
+
+.navbar-brand img.logo {
+    max-height: 100px;
+}
