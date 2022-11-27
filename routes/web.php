@@ -4,6 +4,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 // Public routes
@@ -17,9 +18,9 @@ Route::post('/login', [LoginController::class, 'authenticate']);
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/{user_slug}/home', function () {
-        return view('');
-    })->middleware('auth');
+    Route::get('/{user_slug}/home', [UserController::class, 'home'])
+        ->name('user_home')
+        ->middleware('auth');
 
     Route::resource('post', PostController::class);
 });

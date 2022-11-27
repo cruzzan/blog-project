@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -53,5 +54,15 @@ class User extends Authenticatable
     public function capabilityTags()
     {
         return $this->hasMany(UserCapabilityTag::class);
+    }
+
+    /**
+     * @param string $vanity_tag
+     * @throws ModelNotFoundException
+     * @return User
+     */
+    public static function findOrFailByVanityTag(string $vanity_tag): User
+    {
+        return self::where('vanity_tag', $vanity_tag)->firstOrFail();
     }
 }

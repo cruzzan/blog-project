@@ -5,13 +5,16 @@
         </a>
 
         @if (Auth::check())
-            <a href="{{ route('logout') }}"><button class="btn btn-outline-danger">Log out</button></a>
+            <div>
+                <a href="{{ route('user_home', ['user_slug' => Auth::user()->vanity_tag]) }}"><button class="btn btn-outline-primary">My posts</button></a>
+                <a href="{{ route('logout') }}"><button class="btn btn-outline-danger">Log out</button></a>
+            </div>
         @endif
 
         @if(substr_count(URL::current(), 'login') <= 0 && !Auth::check())
             <div>
-                <a href="{{ route('login') }}"><button type="button" class="btn btn-outline-success">Logga in</button></a>
-                <a href="{{ route('register') }}"><button type="button" class="btn btn-outline-primary">Skapa konto</button></a>
+                <a href="{{ route('login') }}"><button type="button" class="btn btn-outline-success">Log in</button></a>
+                <a href="{{ route('register') }}"><button type="button" class="btn btn-outline-primary">Sign up</button></a>
             </div>
         @endif
     </div>
