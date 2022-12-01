@@ -32,6 +32,7 @@
         <div class="col">{{ $post->heading }}</div>
         <div class="col-2">
             <a href="{{ route('post.edit', ['post' => $post->id]) }}" class="btn btn-sm btn-primary"><i data-feather="edit"></i></a>
+            <a href="{{ route('post.delete', ['post' => $post->id]) }}" class="btn btn-sm btn-danger"><i data-feather="trash-2"></i></a>
         </div>
     </div>
     @endforeach

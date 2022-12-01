@@ -62,8 +62,10 @@ class PostController extends Controller
         return response([], Response::HTTP_NOT_IMPLEMENTED );
     }
 
-    public function destroy(Post $post)
+    public function destroy(Post $post): RedirectResponse
     {
-        return response([], Response::HTTP_NOT_IMPLEMENTED );
+        $post->delete();
+
+        return back()->with('message', 'The post has been deleted');
     }
 }
