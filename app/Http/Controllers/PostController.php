@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -24,15 +25,19 @@ class PostController extends Controller
         return response()->view('post.form');
     }
 
-    public function store(Request $request): Response
+    public function store(Request $request): RedirectResponse
     {
+        $user = Auth::user();
         $post = new Post([
             'heading' => $request->get('heading'),
             'content' => $request->get('content'),
         ]);
 
+        $post->user()->associate($user);
+
         $post->saveOrFail();
-        dd(DB::table('posts')->first());
+
+        return redirect()->route('user_home', ['user_slug' => $user->vanity_tag]);
     }
 
     public function show(Post $post): Response
