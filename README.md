@@ -5,7 +5,7 @@ This project is created to complete my grade for the course DV1440 at BTH.
 ## Run locally
 Build docker container `$ docker build -t blog-project .`
 
-Run the project `$docker-compose up -d`
+Run the project `$ docker-compose up -d`
 
 Run composer `docker run --rm -it --volume $PWD:/app --user $(id -u):$(id -g) composer:latest <command>`
 
