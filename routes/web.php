@@ -19,8 +19,7 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/{user_slug}/home', [UserController::class, 'home'])
-        ->name('user_home')
-        ->middleware('auth');
+        ->name('user_home');
 
     Route::resource('post', PostController::class);
 });
