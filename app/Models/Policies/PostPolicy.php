@@ -24,6 +24,11 @@ class PostPolicy
         return false;
     }
 
+    public function update(User $user, Post $post): bool
+    {
+        return $user->id === $post->user->id;
+    }
+
     public function delete(User $user, Post $post): bool
     {
         return $user->id === $post->user->id;
