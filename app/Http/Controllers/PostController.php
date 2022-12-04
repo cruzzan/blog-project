@@ -49,12 +49,17 @@ class PostController extends Controller
 
     public function edit(Post $post): Response
     {
-        return response([], Response::HTTP_NOT_IMPLEMENTED );
+        return response()->view('post.form', ['post' => $post]);
     }
 
     public function update(Request $request, Post $post)
     {
-        return response([], Response::HTTP_NOT_IMPLEMENTED );
+        $post->heading = $request->get('heading');
+        $post->content = $request->get('content');
+        $post->saveOrFail();
+
+        $user = Auth::user();
+        return redirect()->route('user_home', ['user_slug' => $user->vanity_tag])->with('message', 'The post has been updated');
     }
 
     public function destroy(Post $post): RedirectResponse
