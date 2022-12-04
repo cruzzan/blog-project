@@ -42,5 +42,8 @@ I decided to go for the good old bootstrap framework for my frontend. Mostly bec
 
 I should note that most of the deps I have chosen to add will be loaded through CDNs. I just want to note that, and say that if I was doing this for production, I would go another way.
 
+#### Resource controllers
+I thought it would be a really nice feature. But it turned out to be less than for view-based projects. Because it relies on HTTP methods that forms and stuff don't like (`PUT`, `PATCH`, `DELETE`). Even if I were to be building an SPA or a pure API, I struggle to see what it gives me, other than shorter syntax in the route and forcing naming conventions for the controller methods. 
+
 ## Additional notes
 This project is based on the Laravel framework and as such is subject to the MIT license.
