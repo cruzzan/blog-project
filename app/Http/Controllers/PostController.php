@@ -15,11 +15,6 @@ class PostController extends Controller
         $this->authorizeResource(Post::class, 'post');
     }
 
-    public function index(): Response
-    {
-        return response([], Response::HTTP_NOT_IMPLEMENTED );
-    }
-
     public function create(): Response
     {
         return response()->view('post.form');

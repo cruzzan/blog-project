@@ -21,6 +21,15 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/{user_slug}/home', [UserController::class, 'home'])
         ->name('user_home');
 
-    Route::resource('post', PostController::class);
-    Route::get('post/{post}/destroy', [PostController::class, 'destroy'])->name('post.delete');
+    Route::controller(PostController::class)
+        ->prefix('/post')
+        ->group(function() {
+            Route::get('/create', 'create')->name('post.create');
+            Route::post('/', 'store')->name('post.store');
+            Route::get('/{post}', 'show')->name('post.show');
+            Route::get('/{post}/edit', 'edit')->name('post.edit');
+            Route::post('/{post}', 'update')->name('post.update');
+            Route::get('/{post}/destroy', 'destroy')->name('post.destroy');
+        });
+
 });
