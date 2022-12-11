@@ -9,7 +9,7 @@
             <div class="card-header">{{ $post->heading }}</div>
             <div class="card-body">
                 <p class="card-text"><i>{{ $post->created_at }}</i></p>
-                <a href="#" class="btn btn-primary">Read...</a>
+                <a href="{{ route('user_post', ['user_slug' => $post->user->vanity_tag, 'post' => $post->id]) }}" class="btn btn-primary">Read...</a>
             </div>
         </div>
     </div>

@@ -26,3 +26,29 @@
 .navbar-brand img.logo {
     max-height: 100px;
 }
+
+/* Avatar */
+.avatar {
+    height: 128px;
+    width: 128px;
+}
+
+.avatar div.default {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+
+    height: inherit;
+    width: inherit;
+    border-radius: 50%;
+
+    background-color: #a7afb9;
+}
+
+.avatar div.default p {
+    color: white;
+    text-decoration: none;
+    font-size: 30px;
+    padding: 0;
+    margin: 0;
+}

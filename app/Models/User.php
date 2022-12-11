@@ -65,4 +65,9 @@ class User extends Authenticatable
     {
         return self::where('vanity_tag', $vanity_tag)->firstOrFail();
     }
+
+    public function fullName(): string
+    {
+        return sprintf('%s %s', $this->first_name, $this->last_name);
+    }
 }
