@@ -26,7 +26,6 @@ Route::middleware(['auth'])->group(function () {
         ->group(function() {
             Route::get('/create', 'create')->name('post.create');
             Route::post('/', 'store')->name('post.store');
-            Route::get('/{post}', 'show')->name('post.show');
             Route::get('/{post}/edit', 'edit')->name('post.edit');
             Route::post('/{post}', 'update')->name('post.update');
             Route::get('/{post}/destroy', 'destroy')->name('post.destroy');
