@@ -4,6 +4,6 @@
 
 <p class="text-muted"><small>Created: {{ $post->created_at }} - Last updated: {{ $post->updated_at }}</small></p>
 
-<div>
+<div class="ck-content">
     {!! $post->content !!}
 </div>
