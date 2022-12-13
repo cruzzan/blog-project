@@ -17,16 +17,37 @@ docker exec -t blog-project-site-1 php vendor/bin/phpcs
 
 Run node/yarn `docker run --rm -it --volume $PWD:/app -w /app --user $(id -u):$(id -g) node:current-alpine3.16 <command>`
 
-## Run tests and linting
-Run unit tests `$ composer run unit-tests`
-
-## Functionality
-* *Create account*:
-* *Login*:
-* *Profile setup*:
-
 ## Report
 
+### Functionality
+#### Front page with latest posts
+On the front page, the latest 20 posts created in the site are listed in an abbreviated view. The list also contains a placeholder, where an image that was supposed to go along with the post was to be shown. However, i cut that feature.
+
+#### Show a post
+When a user clicks on a post in the list, they are taken to a page where the post is rendered. In a sidebar, some informaiton about the author is shown, and you can be linked on to the users profile.
+
+#### Show all posts form author
+Here all the posts written by an author are listed and you can click through to them.
+
+#### Create account
+Here you can create an account for the blog site, and start posting.
+
+#### Login
+The auth stuff was pretty much rolled into laravel. So i basically just needed to create a form
+
+#### User posts
+Once logged in, a user can add new posts. These are then listed in the users home. 
+
+* Create posts - You get a form where you can create a post with a title and a "wysiwyg" editor for the content.
+* Delete posts - Clicking on the trashcan will delete the post.
+* Edit posts - Clicking the pen-and-paper will take you to the edit version of the post form.
+
+#### Admin delete posts
+There is also a hidden feature that allows users with the admin capability-tag, to delete any post, not just their own.
+
+### Tech notes
+#### User capabilities and authorization
+I added an enum entity which represents capabilities that users can have, if they are tagged with them. I thought that this was a pretty nice and simple way to add permissions. It was also simple to hook into the policy concept that laravel comes with, since the user performing the action can always be injected.
 
 #### Facades
 I really do not like using the facades system that laravel has implemented. The fact that they have to be building their own extensions to the testing framework to enable mocking is enough to raise some red flags for me. It also makes me a little crazy that I would either need to have quite intimate knowledge of the framework, or some additional tools in my IDE in order to come in cold and start to explore a project that uses laravel. It just doesn't feel right anymore.
@@ -40,7 +61,7 @@ Here is an article series that I liked, on the subject of [Laravel without facad
 #### Frontend framework
 I decided to go for the good old bootstrap framework for my frontend. Mostly because it is just wildly convenient and simple to use, and since that is not an important part of this project I even went so far as to only use the CDN version. Which is even simpler, however that is not a super great plan for a production setup, for reliability and perhaps load times.
 
-I should note that most of the deps I have chosen to add will be loaded through CDNs. I just want to note that, and say that if I was doing this for production, I would go another way.
+~~I should note that most of the deps I have chosen to add will be loaded through CDNs. I just want to note that, and say that if I was doing this for production, I would go another way.~~ I went back on this and got both bootstrap5 and feather-icons in through yarn, and bundle them into my css and js using vite. Which was pretty nice and simple. However i did use a CDN for the CKEditor, because the super-build was hard to find a package for.
 
 #### Resource controllers
 I thought it would be a really nice feature. But it turned out to be less than for view-based projects. Because it relies on HTTP methods that forms and stuff don't like (`PUT`, `PATCH`, `DELETE`). Even if I were to be building an SPA or a pure API, I struggle to see what it gives me, other than shorter syntax in the route and forcing naming conventions for the controller methods. 
