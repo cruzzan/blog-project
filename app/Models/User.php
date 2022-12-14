@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Enums\CapabilityTag;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -69,5 +70,10 @@ class User extends Authenticatable
     public function fullName(): string
     {
         return sprintf('%s %s', $this->first_name, $this->last_name);
+    }
+
+    public function hasCapability(CapabilityTag $tag): bool
+    {
+        return $this->capabilityTags->pluck('capability')->contains($tag);
     }
 }

@@ -9,4 +9,22 @@ enum CapabilityTag: int
     case DeletePost = 3;
     case SeeHidden = 4;
     case AdminUsers = 5;
+
+    public function getText():string
+    {
+        switch ($this){
+            case self::LogIn:
+                return 'Log in';
+            case self::Author:
+                return 'Author posts';
+            case self::DeletePost:
+                return 'Delete posts';
+            case self::SeeHidden:
+                return 'See hidden posts';
+            case self::AdminUsers:
+                return 'Handle users';
+        }
+
+        return '';
+    }
 }

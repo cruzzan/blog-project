@@ -30,6 +30,13 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/{post}', 'update')->name('post.update');
             Route::get('/{post}/destroy', 'destroy')->name('post.destroy');
         });
+
+    Route::controller(UserController::class)
+        ->prefix('/user')
+        ->group(function () {
+            Route::get('/', 'index')->name('user.index');
+            Route::get('/{user}/capability/{capability}', 'toggleCapability')->name('user.toggleCapability');
+        });
 });
 
 Route::get('/{user_slug}/{post}', [HomeController::class, 'post'])->name('user_post');

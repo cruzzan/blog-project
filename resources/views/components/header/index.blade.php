@@ -7,6 +7,9 @@
         @if (Auth::check())
             <div>
                 <a href="{{ route('user_home', ['user_slug' => Auth::user()->vanity_tag]) }}"><button class="btn btn-outline-primary">My posts</button></a>
+                @can('viewAny', \App\Models\User::class)
+                    <a href="{{ route('user.index') }}"><button class="btn btn-outline-dark">Users</button></a>
+                @endcan
                 <a href="{{ route('logout') }}"><button class="btn btn-outline-danger">Log out</button></a>
             </div>
         @endif
