@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 
 class RegisterController extends Controller
@@ -24,6 +25,7 @@ class RegisterController extends Controller
         ]);
 
         $user = new User($validated);
+        $user->password = Hash::make($user->password);
         $user->save();
 
         return redirect('login')
