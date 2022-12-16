@@ -6,9 +6,10 @@ services:
     networks:
       - blog-network
     ports:
-      - "8080:80"
+      - "${PORT_TO_USE:-8080}:80"
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     volumes:
       - ./:/usr/share/nginx/blog-project
     working_dir: /usr/share/nginx/blog-project
@@ -20,12 +21,15 @@ services:
       POSTGRES_USER: blog-project
       POSTGRES_PASSWORD: NotVerySecure123
       POSTGRES_DB: blog
-    ports:
-      - "5432:5432"
     networks:
       blog-network:
         aliases:
           - database
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
   redis:
     image: redis:7.0-alpine
