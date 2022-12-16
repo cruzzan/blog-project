@@ -21,6 +21,7 @@ Requirements: Docker engine version `19.03.0+` and the corresponding `docker-com
   * Print the local host url you can browse to.
 
 3) You can now register a user and try the system out. You can use the super-user to grant yourself more permissions.
+4) Teardown - When you are done you can tear it all down with `docker-compose down` and if you want to clean dangling anonymous volumes `docker volume prune`
 
 ### Individual steps
 Build docker container `$ docker build -t blog-project .`
