@@ -3,6 +3,26 @@
 This project is created to complete my grade for the course DV1440 at BTH.
 
 ## Run locally
+### Quickstart
+
+Requirements: Docker engine version `19.03.0+` and the corresponding `docker-compose`, you also need to have port 8080 available for use on your host, or configure a different port to use in `start.sh`
+
+1) `$ cd to/the/project/root`
+
+2) `$ ./start.sh` - **Please do read the shellscript to make sure that I am not doing anything bad to your host with this script, don't just trust me.**
+
+  This script will:
+  * Build the php/nginx image.
+  * Set up a local `.env` from the template `.env.local`
+  * Build the frontend assets (mounted to the host filesystem)
+  * Run composer install (mounted to the host filesystem)
+  * Start redis, postgres and the built image (The project image does not contain the code, instead I mount that into the container. The image was only really built to be used in local dev env)
+  * Run the migrations and seed a few posts and a super-user (`user@example.com` - `password`)
+  * Print the local host url you can browse to.
+
+3) You can now register a user and try the system out. You can use the super-user to grant yourself more permissions.
+
+### Individual steps
 Build docker container `$ docker build -t blog-project .`
 
 Run the project `$ docker-compose up -d`
