@@ -38,7 +38,7 @@ main () {
 
     # Migrating and seeding
     info "Migrating and seeding the database"
-    docker exec -t blog-project-site-1 php artisan migrate --seed
+    docker exec -t blog-project-site_1 php artisan migrate --seed
 
     # Print final info
     info "The site can now be accessed at http://localhost:$PORT_TO_USE"

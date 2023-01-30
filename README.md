@@ -32,8 +32,8 @@ Run composer `docker run --rm -it --volume $PWD:/app --user $(id -u):$(id -g) co
 
 Run artisan is done using the site container:
 ```
-docker exec -t blog-project-site-1 php artisan
-docker exec -t blog-project-site-1 php vendor/bin/phpcs
+docker exec -t blog-project-site_1 php artisan
+docker exec -t blog-project-site_1 php vendor/bin/phpcs
 ```
 
 Run node/yarn `docker run --rm -it --volume $PWD:/app -w /app --user $(id -u):$(id -g) node:current-alpine3.16 <command>`
