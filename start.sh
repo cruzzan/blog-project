@@ -2,7 +2,7 @@
 
 set -eu
 
-PORT_TO_USE="8080"
+PORT_TO_USE="${PORT_TO_USE:-8080}"
 PROJECT_NAME="blog-project"
 
 info () {
